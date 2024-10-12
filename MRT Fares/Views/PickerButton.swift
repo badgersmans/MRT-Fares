@@ -26,7 +26,7 @@ struct PickerButton: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.gray, lineWidth: 1)
                 )
-                .padding(.vertical, 10)
+//                .padding(.vertical, 5)
         }
         
     }

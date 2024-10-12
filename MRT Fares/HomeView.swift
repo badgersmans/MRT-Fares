@@ -11,11 +11,18 @@ struct HomeView: View {
     var body: some View {
         VStack {
             PickerButton(title: "Start")
+            
+            HStack {
+                Spacer()
+                ReverseButton()
+            }
+            .padding(.trailing, 20)
+            
             PickerButton(title: "Destination")
         }
-//        .padding()
     }
 }
+
 
 #Preview {
     HomeView()
