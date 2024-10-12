@@ -14,7 +14,6 @@ struct ReverseButton: View {
     
     var body: some View {
         Button {
-            print("Reverse Stations")
             let temp = startStation
             startStation = endStation
             endStation = temp

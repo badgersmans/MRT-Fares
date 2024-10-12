@@ -14,20 +14,23 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                NavigationLink(destination: StartStations(selectedStation: $startStation)) {
-                    PickerButton(title: startStation ?? "Start")
-                }
+            ScrollView {
+                VStack {
+                    NavigationLink(destination: StartStations(selectedStation: $startStation)) {
+                        PickerButton(title: startStation ?? "Start")
+                    }
 
-                HStack {
-                    Spacer()
-                    ReverseButton(startStation: $startStation, endStation: $endStation)
+                    HStack {
+                        Spacer()
+                        ReverseButton(startStation: $startStation, endStation: $endStation)
+                    }
+                    .padding(.trailing, 20)
+                    
+                    NavigationLink(destination: EndStations(selectedStation: $endStation)) {
+                        PickerButton(title: endStation ?? "Destination")
+                    }
                 }
-                .padding(.trailing, 20)
-                
-                NavigationLink(destination: EndStations(selectedStation: $endStation)) {
-                    PickerButton(title: endStation ?? "Destination")
-                }
+                .padding(.top, .heightPercent(percent: 0.35))
             }
 //            .navigationTitle("MRT Fare Calculator")
 //            .navigationBarTitleDisplayMode(.inline)
