@@ -9,13 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @State private var startStation: String?
+    @State private var endStation: String?
+    
     var body: some View {
         NavigationStack {
             VStack {
-                NavigationLink(destination: StartStations()) {
-                    PickerButton(title: "Start")
+                NavigationLink(destination: StartStations(selectedStation: $startStation)) {
+                    PickerButton(title: startStation ?? "Start")
                 }
-
 
                 HStack {
                     Spacer()
@@ -23,8 +25,8 @@ struct HomeView: View {
                 }
                 .padding(.trailing, 20)
                 
-                NavigationLink(destination: EndStations()) {
-                    PickerButton(title: "Destination")
+                NavigationLink(destination: EndStations(selectedStation: $endStation)) {
+                    PickerButton(title: endStation ?? "Destination")
                 }
             }
 //            .navigationTitle("MRT Fare Calculator")

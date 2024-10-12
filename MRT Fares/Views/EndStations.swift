@@ -10,11 +10,19 @@ import SwiftUI
 struct EndStations: View {
     @State private var search: String = ""
     @State private var filteredFares: [Fare] = []
+    @Binding var selectedStation: String?
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         List(filteredFares) { fare in
-            Text(fare.name)
-                .padding()
+            Button {
+                selectedStation = fare.name
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text(fare.name)
+                    .font(.title3)
+                    .padding()
+            }
         }
         .searchable(text: $search)
         .onChange(of: search) {
@@ -33,6 +41,6 @@ struct EndStations: View {
 
 #Preview {
     NavigationStack {
-        EndStations()
+        EndStations(selectedStation: .constant(nil))
     }
 }

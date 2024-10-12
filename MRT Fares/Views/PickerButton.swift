@@ -14,7 +14,7 @@ struct PickerButton: View {
     
     var body: some View {
         Text(title)
-            .frame(width: 260, height: 50)
+            .frame(width: .widthPercent(percent: 0.8), height: 50)
         //                .foregroundColor(textColor)
             .font(.title2)
         //                .fontWeight(.semibold)
@@ -23,7 +23,7 @@ struct PickerButton: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(.lightGray), lineWidth: 1)
             )
-        //                .padding(.vertical, 5)
+            .padding(.vertical, 5)
     }
 }
 
