@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ReverseButton: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         Button {
             print("Reverse Stations")
@@ -15,7 +17,7 @@ struct ReverseButton: View {
             Image(systemName: "arrow.up.arrow.down")
                 .font(.title)
                 .symbolRenderingMode(.palette)
-                .foregroundStyle(.black)
+                .foregroundStyle(colorScheme == .dark ? .blue : .black)
         }
     }
 }

@@ -24,7 +24,7 @@ struct PickerButton: View {
                 
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(.gray, lineWidth: 1)
+                        .stroke(Color(.lightGray), lineWidth: 1)
                 )
 //                .padding(.vertical, 5)
         }
