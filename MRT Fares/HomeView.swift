@@ -21,7 +21,7 @@ struct HomeView: View {
 
                 HStack {
                     Spacer()
-                    ReverseButton()
+                    ReverseButton(startStation: $startStation, endStation: $endStation)
                 }
                 .padding(.trailing, 20)
                 
