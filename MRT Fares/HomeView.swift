@@ -12,7 +12,8 @@ struct HomeView: View {
     @State private var startStation: String?
     @State private var endStation: String?
     @State private var totalFare: Double?
-    
+    @State private var mrtFares: [Fare] = []
+
     
     var body: some View {
         NavigationStack {

@@ -12,10 +12,17 @@ struct CalculateButton: View {
     @Binding var endStation: String?
     @Binding var totalFare: Double?
     
+    @State private var fares: [Fare] = []
+    
+    
     var body: some View {
         Button {
+            if fares.isEmpty {
+                fares = loadFares()
+            }
+            
             if let start = startStation, let end = endStation {
-                totalFare = calculateFare(from: start, to: end, fares: dummyFares)
+                totalFare = calculateFare(from: start, to: end, fares: fares)
             } else {
                 totalFare = nil // Clear the fare if stations are not selected
             }
@@ -25,7 +32,7 @@ struct CalculateButton: View {
                 .font(.title3)
         }
         .buttonStyle(.borderedProminent)
-        .disabled((startStation?.isEmpty ?? true) || (endStation?.isEmpty ?? true))
+        .disabled((startStation == nil) || (endStation == nil))
         .padding(.bottom, 30)
     }
 }

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8F63B4712CBB8A3000363C2E /* mrt_prices.json in Resources */ = {isa = PBXBuildFile; fileRef = 8F63B4702CBB8A3000363C2E /* mrt_prices.json */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8F155B8D2CBA3B1F00748A05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		8F155B7C2CBA3B1E00748A05 /* MRT Fares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MRT Fares.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F155B8C2CBA3B1F00748A05 /* MRT FaresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MRT FaresTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F155B962CBA3B1F00748A05 /* MRT FaresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MRT FaresUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F63B4702CBB8A3000363C2E /* mrt_prices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mrt_prices.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		8F155B732CBA3B1D00748A05 = {
 			isa = PBXGroup;
 			children = (
+				8F63B4702CBB8A3000363C2E /* mrt_prices.json */,
 				8F155B7E2CBA3B1E00748A05 /* MRT Fares */,
 				8F155B8F2CBA3B1F00748A05 /* MRT FaresTests */,
 				8F155B992CBA3B1F00748A05 /* MRT FaresUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F63B4712CBB8A3000363C2E /* mrt_prices.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

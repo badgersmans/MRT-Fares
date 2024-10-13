@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct Fare: Identifiable, Hashable {
-    let id = UUID()
+struct Fare: Identifiable, Codable {
     let start: String
     let destination: String
     let price: Double
+    
+    // Since there is no 'id' in JSON, we can create it manually in the initializer.
+    var id: UUID {
+        UUID() // Generate a new UUID for each instance
+    }
 }
 
 
@@ -25,8 +29,27 @@ let dummyFares: [Fare] = [
     Fare(start: "Abdullah Hukum", destination: "Gombak", price: 1.8),
     Fare(start: "Alam Sutera", destination: "Alam Megah", price: 3.5),
     Fare(start: "Hospital Kuala Lumpur", destination: "Alam Sutera", price: 2.8),
-    Fare(start: "16 Sierra", destination: "Abdullah Hukum", price: 4.1)
+    Fare(start: "16 Sierra", destination: "Abdullah Hukum", price: 4.1),
+    Fare(start: "Abdullah Hukum", destination: "16 Sierra", price: 4.5)
 ]
+
+func loadFares() -> [Fare] {
+    guard let url = Bundle.main.url(forResource: "mrt_prices", withExtension: "json") else {
+        print(Bundle.main.bundlePath) // This will show you the path of the app's bundle
+        print("MRT prices file cannot be found.")
+        return []
+    }
+
+    do {
+        let data = try Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        return try decoder.decode([Fare].self, from: data)
+    } catch {
+        print("Failed to load MRT fares: \(error)")
+        return []
+    }
+}
+
 
 let stationNames = [
     "16 Sierra",
