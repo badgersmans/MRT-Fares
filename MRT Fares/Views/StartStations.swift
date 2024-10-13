@@ -9,34 +9,36 @@ import SwiftUI
 
 struct StartStations: View {
     @State private var search: String = ""
-    @State private var filteredFares: [Fare] = []
+    @State private var filteredStations: [String] = []
     @Binding var selectedStation: String?
     @Environment(\.presentationMode) var presentationMode
-
+    
     
     var body: some View {
-        List(filteredFares) { fare in
+        List(filteredStations, id: \.self ) { station in
             Button {
-                selectedStation = fare.name
+                selectedStation = station
                 presentationMode.wrappedValue.dismiss()
-
+                
             } label: {
-                Text(fare.name)
+                Text(station)
                     .font(.title3)
                     .padding()
             }
         }
-        .searchable(text: $search)
+        .searchable(text: $search,
+                    placement: .navigationBarDrawer(displayMode: .always)
+        )
         .onChange(of: search) {
             if search.isEmpty {
-                filteredFares = dummyFares
+                filteredStations = stationNames
             } else {
-                filteredFares = dummyFares.filter { $0.name.localizedCaseInsensitiveContains(search) }
+                filteredStations = stationNames.filter { $0.localizedCaseInsensitiveContains(search) }
             }
         }
         .navigationTitle("Start")
         .onAppear {
-            filteredFares = dummyFares
+            filteredStations = stationNames
         }
     }
 }

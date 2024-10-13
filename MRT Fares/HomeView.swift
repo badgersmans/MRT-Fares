@@ -11,6 +11,8 @@ struct HomeView: View {
     
     @State private var startStation: String?
     @State private var endStation: String?
+    @State private var totalFare: Double?
+    
     
     var body: some View {
         NavigationStack {
@@ -19,7 +21,7 @@ struct HomeView: View {
                     NavigationLink(destination: StartStations(selectedStation: $startStation)) {
                         PickerButton(title: startStation ?? "Start")
                     }
-
+                    
                     HStack {
                         Spacer()
                         ReverseButton(startStation: $startStation, endStation: $endStation)
@@ -29,14 +31,22 @@ struct HomeView: View {
                     NavigationLink(destination: EndStations(selectedStation: $endStation)) {
                         PickerButton(title: endStation ?? "Destination")
                     }
+                    .padding(.bottom, 30)
+                    
+                    CalculateButton(startStation: $startStation,
+                                    endStation: $endStation,
+                                    totalFare: $totalFare)
+                    
+                    if let fare = totalFare {
+                        FareText(totalFare: fare)
+                    }
+                    
                 }
-                .padding(.top, .heightPercent(percent: 0.35))
+                .padding(.top, .heightPercent(percent: 0.30))
             }
-//            .navigationTitle("MRT Fare Calculator")
-//            .navigationBarTitleDisplayMode(.inline)
+            //            .navigationTitle("MRT Fare Calculator")
+            //            .navigationBarTitleDisplayMode(.inline)
         }
-        
-        
     }
 }
 
